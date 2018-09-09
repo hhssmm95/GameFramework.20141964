@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PP01.HelloSDL", "PP01.HelloSDL.vcxproj", "{1EEBBF5C-6EE2-40C9-9ACD-6E342C9C8CC6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PP01.HelloSDL", "PP01.HelloSDL\PP01.HelloSDL.vcxproj", "{1EEBBF5C-6EE2-40C9-9ACD-6E342C9C8CC6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PP02.BreakUpHelloSDL", "..\PP02.BreakUpHelloSDL\PP02.BreakUpHelloSDL.vcxproj", "{EBBAD1F6-D950-4CC7-9C04-17E2468830AD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PP02.BreakUpHelloSDL", "PP02.BreakUpHelloSDL\PP02.BreakUpHelloSDL.vcxproj", "{EBBAD1F6-D950-4CC7-9C04-17E2468830AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
