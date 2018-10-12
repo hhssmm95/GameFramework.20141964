@@ -26,7 +26,7 @@ bool Game::init(const char* title, int xpos, int ypos,
 	//m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 
 	//m_textureManager.load("assets/animate-alpha.png", "animate", m_pRenderer);
-	if (TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
+	if (!TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
 	{
 		return false;
 	}
