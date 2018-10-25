@@ -7,8 +7,11 @@ private:
 	SDL_Window * m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	SDL_Texture* m_pTexture;
-	SDL_Rect m_sourceRectangle;
+	SDL_Texture* m_pBGTexture;
+	SDL_Rect m_sourceRectangle1;
 	SDL_Rect m_destinationRectangle;
+	SDL_Rect bgSR;
+	SDL_Rect bgDR;
 	bool m_bRunning;
 
 public:
