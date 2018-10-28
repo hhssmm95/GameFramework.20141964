@@ -6,9 +6,15 @@ class Game
 private:
 	SDL_Window * m_pWindow;
 	SDL_Renderer* m_pRenderer;
-	SDL_Texture* m_pTexture;
-	SDL_Rect m_sourceRectangle;
-	SDL_Rect m_destinationRectangle;
+	SDL_Texture* m_pTexture1;
+	SDL_Texture* m_pTexture2;
+	SDL_Texture* bgTexture;
+	SDL_Rect m_sourceRectangle1;
+	SDL_Rect m_sourceRectangle2;
+	SDL_Rect bgSrcRect;
+	SDL_Rect m_destinationRectangle1;
+	SDL_Rect m_destinationRectangle2;
+	SDL_Rect bgDestRect;
 	bool m_bRunning;
 
 public:
