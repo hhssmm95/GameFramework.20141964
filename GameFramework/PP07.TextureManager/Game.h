@@ -1,17 +1,17 @@
+#pragma once
 #include<SDL.h>
-
+#include"TextureManager.h"
 class Game
 {
 private:
 	SDL_Window * m_pWindow;
 	SDL_Renderer* m_pRenderer;
-	SDL_Texture* m_pTexture1;
-	SDL_Texture* m_pTexture2;
-	SDL_Rect m_sourceRectangle1;
-	SDL_Rect m_sourceRectangle2;
-	SDL_Rect m_destinationRectangle1;
-	SDL_Rect m_destinationRectangle2;
+	//SDL_Texture* m_pTexture;
+	//SDL_Rect m_sourceRectangle;
+	//SDL_Rect m_destinationRectangle;
 	bool m_bRunning;
+	int m_currentFrame;
+	TextureManager m_textureManager;
 
 public:
 	Game() {}
