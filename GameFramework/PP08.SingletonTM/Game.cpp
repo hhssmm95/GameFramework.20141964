@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "TextureManager.h"
 #include <iostream>
 #include <SDL_image.h>
 

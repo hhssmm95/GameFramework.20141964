@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-class Player : public GameObject
+class Enemy : public GameObject
 {
 public:
 	void load(int x, int y, int width, int height,

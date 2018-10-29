@@ -13,7 +13,7 @@ bool Game::init(const char* title, int xpos, int ypos,
 		}
 		m_bRunning = true;
 
-		
+
 	}
 
 	else {
@@ -22,11 +22,13 @@ bool Game::init(const char* title, int xpos, int ypos,
 
 	if (!TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
 	{
-		
+
 		std::cout << "TMload error";
 		
 		return false;
 	}
+	m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+
 	m_go.load(100, 100, 128, 82, "animate");
 	m_player.load(300, 300, 128, 82, "animate");
 	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
