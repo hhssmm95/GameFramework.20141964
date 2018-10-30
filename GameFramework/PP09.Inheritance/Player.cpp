@@ -17,3 +17,4 @@ void Player::update()
 {
 	m_x -= 1;
 }
+

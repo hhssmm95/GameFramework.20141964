@@ -10,9 +10,9 @@ private:
 	bool m_bRunning;
 	int m_currentFrame;
 
-	GameObject m_go;
-	GameObject m_player;
-	GameObject m_enemy;
+	GameObject* m_go;
+	GameObject* m_player;
+	GameObject* m_enemy;
 
 	std::vector<GameObject*> m_gameObjects;
 
