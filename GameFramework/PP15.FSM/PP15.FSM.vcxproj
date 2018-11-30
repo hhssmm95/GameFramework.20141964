@@ -23,6 +23,7 @@
     <ProjectGuid>{E176E526-BABD-4656-ACF0-D2AC2A7F20A0}</ProjectGuid>
     <RootNamespace>PP15FSM</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>PP16.MenuState</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -129,6 +130,7 @@
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LoaderParams.h" />
+    <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
@@ -142,6 +144,7 @@
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />

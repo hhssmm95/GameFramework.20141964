@@ -22,6 +22,8 @@ public:
 private:
 	static const std::string s_menuID;
 	static MenuState* s_pInstance;
+	static void s_menuToPlay();
+	static void s_exitFromMenu();
 	MenuState() {}
 	~MenuState() {}
 };
