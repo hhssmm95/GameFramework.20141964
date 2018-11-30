@@ -45,11 +45,8 @@ bool MenuState::onEnter()
 
 bool MenuState::onExit()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->clean();
-	}
-	m_gameObjects.clear();
+	if (!GameState::onExit())
+		return false;
 	TheTextureManager::Instance()
 		->clearFromTextureMap("playbutton");
 	TheTextureManager::Instance()

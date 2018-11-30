@@ -11,6 +11,6 @@ public:
 	virtual void update();
 	virtual void render();
 	virtual bool onEnter() = 0;
-	virtual bool onExit() = 0;
+	virtual bool onExit();
 	virtual std::string getStateID() const = 0;
 };

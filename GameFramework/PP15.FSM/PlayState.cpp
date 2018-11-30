@@ -3,11 +3,20 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Game.h"
+#include"InputHandler.h"
+#include"PauseState.h"
 
 const std::string PlayState::s_playID = "PLAY";
 
 void PlayState::update()
 {
+	if (TheInputHandler::Instance()->isKeyDown(
+		SDL_SCANCODE_ESCAPE))
+	{
+		TheGame::Instance()->getStateMachine()->changeState(
+			new PauseState());
+	}
+
 	GameState::update();
 }
 void PlayState::render()
@@ -34,12 +43,8 @@ bool PlayState::onEnter()
 
 bool PlayState::onExit()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->clean();
-	}
-	m_gameObjects.clear();
-
+	if (!GameState::onExit())
+		return false;
 	TheTextureManager::Instance()->clearFromTextureMap("helicopter");
 	std::cout << "exiting PlayState\n";
 	return true;

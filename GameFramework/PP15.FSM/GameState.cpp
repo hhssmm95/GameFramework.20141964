@@ -17,3 +17,13 @@ void GameState::render()
 	}
 
 }
+
+bool GameState::onExit()
+{
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->clean();
+	}
+	m_gameObjects.clear();
+	return true;
+}

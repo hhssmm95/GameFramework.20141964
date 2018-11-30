@@ -33,7 +33,7 @@ public:
 	void onMouseButtonUp(SDL_Event);
 	void onKeyDown();
 	void onKeyUp();
-
+	void reset();
 
 private:
 	InputHandler();
