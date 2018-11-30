@@ -8,18 +8,12 @@ const std::string MenuState::s_menuID = "MENU";
 
 void MenuState::update()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
+	GameState::update();
 }
 
 void MenuState::render()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	GameState::render();
 }
 
 bool MenuState::onEnter()
