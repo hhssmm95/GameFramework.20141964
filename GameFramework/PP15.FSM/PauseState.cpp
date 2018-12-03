@@ -20,11 +20,19 @@ void PauseState::s_resumePlay()
 
 void PauseState::update()
 {
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
+	}
 	GameState::update();
 }
 
 void PauseState::render()
 {
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw();
+	}	
 	GameState::render();
 }
 
