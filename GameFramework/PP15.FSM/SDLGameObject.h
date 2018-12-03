@@ -9,6 +9,9 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	Vector2D getPosition();
+	int getWidth();
+	int getHeight();
 protected:
 	//int m_x;
 	//int m_y;
@@ -16,6 +19,7 @@ protected:
 	int m_height;
 	int m_currentRow;
 	int m_currentFrame;
+	
 	std::string m_textureID;
 
 	Vector2D m_position;
