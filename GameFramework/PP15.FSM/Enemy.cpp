@@ -4,7 +4,8 @@
 Enemy::Enemy(const LoaderParams* pParams, int numsFrames) : SDLGameObject(pParams), m_numFrames(numsFrames)
 {
 	m_velocity.setY(2);
-	m_velocity.setX(0.001);
+	m_velocity.setX(-0.1);
+
 }
 void Enemy::draw()
 {
