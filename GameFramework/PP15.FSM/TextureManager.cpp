@@ -46,7 +46,7 @@ void TextureManager::drawFrame(std::string id, int x, int y,
 {
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
-	srcRect.x = width * currentFrame;
+	srcRect.x = width * (currentFrame);
 	srcRect.y = height * (currentRow - 1);
 	srcRect.w = destRect.w = width;
 	srcRect.h = destRect.h = height;

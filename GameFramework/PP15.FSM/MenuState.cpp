@@ -28,6 +28,11 @@ bool MenuState::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/background.png",
+		"background", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
 	GameObject* button1 = new MenuButton(
 		new LoaderParams(100, 100, 400, 100, "playbutton"),
 		s_menuToPlay);
@@ -35,9 +40,12 @@ bool MenuState::onEnter()
 	GameObject* button2 = new MenuButton(
 		new LoaderParams(100, 300, 400, 100, "exitbutton"),
 		s_exitFromMenu);
-
+	GameObject* bg = new SDLGameObject(
+		new LoaderParams(0, 0, 640, 480, "background"));
+	m_gameObjects.push_back(bg);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
+	
 	std::cout << "entering MenuState\n";
 	return true;
 

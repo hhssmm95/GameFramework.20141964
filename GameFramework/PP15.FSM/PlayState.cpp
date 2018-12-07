@@ -6,13 +6,15 @@
 #include"InputHandler.h"
 #include"PauseState.h"
 #include"GameOverState.h"
+#include"CollisionManager.h"
+#include "Bullet.h"
 
 const std::string PlayState::s_playID = "PLAY";
-
+CollisionManager* TheCollisionManager::s_pInstance = 0;
 void PlayState::update()
 {
 
-	if (checkCollision(
+	if (CollisionManager::Instance()->checkCollision(
 		dynamic_cast<SDLGameObject*>(m_gameObjects[0]),
 		dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
 	{
@@ -25,6 +27,12 @@ void PlayState::update()
 	{
 		TheGame::Instance()->getStateMachine()->changeState(
 			new PauseState());
+	}
+
+	if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
+	{
+		bullets.push_back(new Bullet(new LoaderParams(m_gameObjects[0]->getPosition().getX(),
+			m_gameObjects[0]->getPosition().getY(), 64, 64, "bullet")));
 	}
 
 	GameState::update();
@@ -69,28 +77,3 @@ bool PlayState::onExit()
 
 }
 
-bool PlayState::checkCollision(SDLGameObject* p1, SDLGameObject* p2)
-{
-	int leftA, leftB;
-	int rightA, rightB;
-	int topA, topB;
-	int bottomA, bottomB;
-
-	leftA = p1->getPosition().getX();
-	rightA = p1->getPosition().getX() + p1->getWidth();
-	topA = p1->getPosition().getY();
-	bottomA = p1->getPosition().getY() + p1->getHeight();
-
-	//Calculate the sides of rect B
-	leftB = p2->getPosition().getX();
-	rightB = p2->getPosition().getX() + p2->getWidth();
-	topB = p2->getPosition().getY();
-	bottomB = p2->getPosition().getY() + p2->getHeight();
-
-	//If any of the sides from A are outside of B
-	if (bottomA <= topB) { return false; }
-	if (topA >= bottomB) { return false; }
-	if (rightA <= leftB) { return false; }
-	if (leftA >= rightB) { return false; }
-	return true;
-}
