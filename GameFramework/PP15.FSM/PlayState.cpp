@@ -15,7 +15,7 @@ void PlayState::update()
 {
 
 	if (CollisionManager::Instance()->checkCollision(
-		dynamic_cast<SDLGameObject*>(m_gameObjects[0]),
+		dynamic_cast<SDLGameObject*> (m_gameObjects[0]),
 		dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
 	{
 		TheGame::Instance()->getStateMachine()->changeState(

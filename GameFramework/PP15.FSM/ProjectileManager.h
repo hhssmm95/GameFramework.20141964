@@ -18,8 +18,10 @@ public:
 		}
 		return s_pInstance;
 	}
-	void drawBullet();
-	void checkCollision();
+	void Shot(int x, int y, Vector2D velocity);
+	void render();
+	void onHitEnemy(SDLGameObject* obj);
+	void onOut();
 	void update();
 	void clean();
 	//virtual SDL_Rect getCollider();

@@ -1,9 +1,11 @@
 #include "ProjectileManager.h"
-#include"InputHandler.h"
 #include"TextureManager.h"
 #include"Game.h"
 #include"PlayState.h"
+#include"Vector2D.h"
+#include"CollisionManager.h"
 #include <SDL.h>
+
 
 ProjectileManager::ProjectileManager()
 {
@@ -16,28 +18,29 @@ ProjectileManager::ProjectileManager()
 		std::cout << "bullet2 load failure" <<std::endl;
 	}
 
-
 }
 
-void ProjectileManager::drawBullet()
+void ProjectileManager::Shot(int x, int y, Vector2D velocity)
 {
-	TextureManager::Instance()->draw(m_textureID,
-		(int)m_position.getX(), (int)m_position.getY(),
-		m_width, m_height, TheGame::Instance()->getRenderer());
-}
-void Bullet::update()
-{
-	m_velocity.setY(0);
-	SDLGameObject::update();
-
-
-}
-void Bullet::clean()
-{
-	delete(this);
+	GameObject* bullet = new SDLGameObject(new LoaderParams(x, y, 8, 8, "bullet1"));
+	bullets.push_back(bullet);
 }
 
-void Bullet::handleInput()
+void ProjectileManager::render()
 {
-	
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets[i]->draw();
+	}
+}
+
+void ProjectileManager::onHitEnemy(SDLGameObject* obj)
+{
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		if (TheCollisionManager::Instance()->checkCollision(dynamic_cast<SDLGameObject*>(obj), dynamic_cast<SDLGameObject*>(bullets[i])))
+		{
+
+		}
+	}
 }
