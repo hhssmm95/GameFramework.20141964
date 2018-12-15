@@ -20,9 +20,30 @@ ProjectileManager::ProjectileManager()
 
 }
 
-void ProjectileManager::Shot(int x, int y, Vector2D velocity)
+void ProjectileManager::Shot(int x, int y, int velocity, int p_velocity)
 {
-	GameObject* bullet = new SDLGameObject(new LoaderParams(x, y, 8, 8, "bullet1"));
+	GameObject* bullet;
+	
+	if (p_velocity >= 2)
+	{
+		bullet = new SDLGameObject(new LoaderParams(x, y, 8, 8, "bullet1"));
+
+		bullet->setVelocity_X(velocity);
+		bullet->setVelocity_Y(3);
+	}
+	else if (p_velocity <= -2)
+	{
+		bullet = new SDLGameObject(new LoaderParams(x, y, 8, 8, "bullet1"));
+
+		bullet->setVelocity_X(velocity);
+		bullet->setVelocity_Y(-3);
+	}
+	else
+	{
+		bullet = new SDLGameObject(new LoaderParams(x, y, 8, 8, "bullet1"));
+
+		bullet->setVelocity_X(velocity);
+	}
 	bullets.push_back(bullet);
 }
 
@@ -34,13 +55,24 @@ void ProjectileManager::render()
 	}
 }
 
-void ProjectileManager::onHitEnemy(SDLGameObject* obj)
+void ProjectileManager::update()
 {
+	for (int i = 0; i < bullets.size(); i++)
+	{
+		bullets[i]->update();
+	}
+}
+
+bool ProjectileManager::onHit(GameObject* obj)
+{
+	bool hit = false;
 	for (int i = 0; i < bullets.size(); i++)
 	{
 		if (TheCollisionManager::Instance()->checkCollision(dynamic_cast<SDLGameObject*>(obj), dynamic_cast<SDLGameObject*>(bullets[i])))
 		{
-
+			bullets.erase(bullets.begin() + i);
+			hit = true;
 		}
 	}
+	return hit;
 }

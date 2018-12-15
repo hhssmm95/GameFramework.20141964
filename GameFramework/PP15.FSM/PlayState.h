@@ -20,9 +20,12 @@ public:
 		}
 		return s_pInstance;
 	}
+	int getRandomSpawnPoint();
 private:
 	static const std::string s_playID;
 	static PlayState* s_pInstance;
+	int shotCooltime = 0;
+	int spawnCooltime = 100;
 	PlayState(){}
 	~PlayState(){}
 	std::vector<GameObject*> bullets;

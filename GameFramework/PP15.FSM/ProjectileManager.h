@@ -18,9 +18,9 @@ public:
 		}
 		return s_pInstance;
 	}
-	void Shot(int x, int y, Vector2D velocity);
+	void Shot(int x, int y, int velocity, int p_velocity);
 	void render();
-	void onHitEnemy(SDLGameObject* obj);
+	bool onHit(GameObject* obj);
 	void onOut();
 	void update();
 	void clean();
