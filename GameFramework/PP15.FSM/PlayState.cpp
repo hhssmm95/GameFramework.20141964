@@ -49,6 +49,7 @@ void PlayState::update()
 		{
 			m_gameObjects.erase(m_gameObjects.begin() + i);
 		}
+		score++;
 	}
 	
 
@@ -70,6 +71,11 @@ void PlayState::render()
 {
 	GameState::render();
 	TheProjectileManager::Instance()->render();
+	/*TextureManager::Instance()->drawText("score_text", 10, 10,
+		TheGame::Instance()->getRenderer());
+*/
+	TextureManager::Instance()->UpdateAndDrawNumber(score, 100, 10,
+		TheGame::Instance()->getRenderer());
 }
 bool PlayState::onEnter()
 {
@@ -86,6 +92,11 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
+	/*if (!TheTextureManager::Instance()->loadText("SCORE: ", "score_text", 
+		TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}*/
 	GameObject* player = new Player(
 		new LoaderParams(100, 100, 128, 55, "helicopter"));
 	/*GameObject* enemy = new Enemy(

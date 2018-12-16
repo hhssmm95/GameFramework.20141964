@@ -48,6 +48,14 @@ bool GameOverState::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/defeat.png",
+		"defeat", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	GameObject* bg = new SDLGameObject(
+		new LoaderParams(0, 0, 640, 480, "defeat"));
+
 	GameObject* gameOverText = new AnimatedGraphic(
 		new  LoaderParams(200, 100, 190, 30, "gameovertext"), 2, 2);
 
@@ -59,6 +67,7 @@ bool GameOverState::onEnter()
 		new LoaderParams(200, 300, 200, 80, "restartbutton"),
 		s_restartPlay);
 
+	m_gameObjects.push_back(bg);
 	m_gameObjects.push_back(gameOverText);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);

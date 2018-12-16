@@ -26,6 +26,7 @@ private:
 	static PlayState* s_pInstance;
 	int shotCooltime = 0;
 	int spawnCooltime = 100;
+	int score = 0;
 	PlayState(){}
 	~PlayState(){}
 	std::vector<GameObject*> bullets;

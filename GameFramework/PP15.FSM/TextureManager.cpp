@@ -1,5 +1,7 @@
 #include"TextureManager.h"
 #include<SDL_image.h>
+#include<SDL_ttf.h>
+#include<string>
 
 bool TextureManager::load(std::string fileName, std::string id,
 	SDL_Renderer* pRenderer)
@@ -56,6 +58,112 @@ void TextureManager::drawFrame(std::string id, int x, int y,
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect,
 		&destRect, angle, 0, flip);
 }
+bool TextureManager::loadText(const char* message, std::string id, SDL_Renderer* pRenderer)
+{
+	TTF_Font* font;
+	font = TTF_OpenFont("assets/NanumGothicExtraBold.ttf", 20);
+
+	if (font == NULL)
+		return false;
+
+	SDL_Color color;
+
+	color.r = 255;
+
+	color.g = 255;
+
+	color.b = 255;
+
+
+
+	SDL_Surface* pSurface;
+
+	pSurface = TTF_RenderText_Solid(font, message, color);
+
+	SDL_Texture* text = SDL_CreateTextureFromSurface(pRenderer, pSurface);
+
+
+
+	if (text != 0) {
+
+		m_textureMap[id] = text;
+
+		return true;
+
+	}
+
+	return false;
+
+}
+bool TextureManager::drawText(std::string id, int x, int y, SDL_Renderer* pRenderer)
+{
+	SDL_Rect textRect;
+
+	int w = 0;
+	int h = 0;
+
+	SDL_QueryTexture(m_textureMap[id], NULL, NULL, &w, &h);
+
+	textRect.x = x;
+	textRect.y = y;
+	textRect.w = w;
+	textRect.h = h;
+
+
+	SDL_RenderCopy(pRenderer, m_textureMap[id], NULL, &textRect);
+
+	return true;
+}
+
+
+
+bool TextureManager::UpdateAndDrawNumber(int score, int x, int y, SDL_Renderer* pRenderer)
+{
+	TTF_Font* font;
+
+	font = TTF_OpenFont("assets/NanumGothicExtraBold.ttf", 20);
+
+	if (font == NULL)
+		return false;
+
+	SDL_Color color;
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
+
+	std::string s = std::to_string(score);
+
+	const char* c = s.c_str();
+
+	SDL_Surface* pSurface;
+
+	pSurface = TTF_RenderText_Solid(font, c, color);
+
+	SDL_Texture* text = SDL_CreateTextureFromSurface(pRenderer, pSurface);
+
+	SDL_Rect textRect;
+
+	int w = 0;
+	int h = 0;
+
+
+	SDL_QueryTexture(text, NULL, NULL, &w, &h);
+
+	textRect.x = x;
+
+	textRect.y = y;
+
+	textRect.w = w;
+
+	textRect.h = h;
+
+
+
+	SDL_RenderCopy(pRenderer, text, NULL, &textRect);
+
+}
+
+
 
 
 void TextureManager::clearFromTextureMap(std::string id)
